@@ -12,10 +12,31 @@ import edu.wpi.first.wpilibj.RobotDrive;
  * documentation. If you change the name of this class or the package after
  * creating this project, you must also update the manifest file in the resource
  * directory.
+ * 
+ * One motor for winch. 
+ * 2 pneumatic actuators 
+ * Camera 
+ * Encoders for motors
+ * 
+ * Teleop 
+ * Raise lift 
+ * Lower lift 
+ * Top and bottom limit switches
+ * How to monitor? 
+ * 
+ * 70% power unless both triggers
+ * Multiple autonomous modes
+ * Automonus tracking and grabbing of crates
+ * Figure out camera position. 
+ * 
+ * Tobi will handle Jetson code
+ * 
+ * Jetson-RIO interface
  */
 public class Robot extends IterativeRobot {
 	Jaguar leftMotor = new Jaguar(0);
 	Jaguar rightMotor = new Jaguar(1);
+	Jaguar winchyMotor = new Jaguar(2);
 	RobotDrive drivetrain = new RobotDrive(leftMotor, rightMotor);
 	
 	Joystick leftStick, rightStick;
@@ -24,8 +45,8 @@ public class Robot extends IterativeRobot {
      * used for any initialization code.
      */
     public void robotInit() {
-    	leftStick = new Joystick(1);
-    	leftStick = new Joystick(2);
+    	leftStick = new Joystick(0);
+    	rightStick = new Joystick(1);
     }
 
     /**
@@ -39,7 +60,26 @@ public class Robot extends IterativeRobot {
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
-        drivetrain.tankDrive(leftStick, rightStick);
+    	if(leftStick.getTrigger() && rightStick.getTrigger()){
+    		drivetrain.tankDrive(leftStick.getY(), rightStick.getX());
+    	} else drivetrain.tankDrive(leftStick.getY()*.7, rightStick.getX()*.7); // TODO need to check which chain to slow down to make it drive straight
+    	
+    }
+    
+    public void goToCrate(){
+    	/*
+    	 * Constantly get position
+    	 * Follow color tracker to crate
+    	 * drivetrain.arcadeDrive(x,y);
+    	 */
+    }
+    
+    public void raiseLift(){
+    	
+    }
+    
+    public void lowerLift(){
+    	
     }
     
     /**
