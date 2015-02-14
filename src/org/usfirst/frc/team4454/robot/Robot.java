@@ -61,8 +61,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
     	if(leftStick.getTrigger() && rightStick.getTrigger()){
-    		drivetrain.tankDrive(leftStick.getY(), rightStick.getX());
-    	} else drivetrain.tankDrive(leftStick.getY()*.7, rightStick.getX()*.7); // TODO need to check which chain to slow down to make it drive straight
+    		drivetrain.tankDrive(leftStick.getY()*.95, rightStick.getX());
+    	} else drivetrain.tankDrive(leftStick.getY()*0.75, rightStick.getY()*0.8); // TODO need to check which chain to slow down to make it drive straight
     	
     }
     
@@ -74,12 +74,16 @@ public class Robot extends IterativeRobot {
     	 */
     }
     
-    public void raiseLift(){
+    public void checkForInput(){
     	
     }
     
-    public void lowerLift(){
-    	
+    public void raiseLift(double speed){
+    	winchyMotor.set(speed);
+    }
+    
+    public void lowerLift(double speed){
+    	winchyMotor.set(-speed);
     }
     
     /**
