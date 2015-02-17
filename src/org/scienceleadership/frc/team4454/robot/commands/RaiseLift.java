@@ -1,56 +1,50 @@
 package org.scienceleadership.frc.team4454.robot.commands;
 
+import org.scienceleadership.frc.team4454.robot.Robot;
+import org.scienceleadership.frc.team4454.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class RaiseLift extends Command {
-
+	
+	DigitalInput limitTop = RobotMap.forkliftLimitTop;
+	DigitalInput limitBottom = RobotMap.forkliftLimitBottom;
+	private boolean finished;
+	
 	public RaiseLift() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public RaiseLift(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
-	}
-
-	public RaiseLift(double timeout) {
-		super(timeout);
-		// TODO Auto-generated constructor stub
-	}
-
-	public RaiseLift(String name, double timeout) {
-		super(name, timeout);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	protected void initialize() {
-		// TODO Auto-generated method stub
-
+		requires(Robot.lift);
 	}
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
-
+		if(!limitTop.get()){
+			Robot.lift.Raise();
+		}
+		else{
+			Robot.lift.Hold();
+		}
+		finished = true;
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		return finished;
 	}
 
 	@Override
 	protected void end() {
-		// TODO Auto-generated method stub
-
+		Robot.lift.Hold();
 	}
 
 	@Override
 	protected void interrupted() {
-		// TODO Auto-generated method stub
+		end();
+	}
 
+	@Override
+	protected void initialize() {
+		// empty or w/e
 	}
 
 }

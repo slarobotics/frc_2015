@@ -1,7 +1,9 @@
 package org.scienceleadership.frc.team4454.robot;
 
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.Jaguar;
 import edu.wpi.first.wpilibj.RobotDrive;
+import edu.wpi.first.wpilibj.Victor;
 
 /**
  * The RobotMap is a mapping from the ports sensors and actuators are wired into
@@ -23,5 +25,9 @@ public class RobotMap {
 	public static Jaguar leftMotor = new Jaguar(1);
 	public static Jaguar rightMotor = new Jaguar(0);
 	public static RobotDrive drivetrain = new RobotDrive(leftMotor, rightMotor);
+	public static Victor forkliftMotor = new Victor(2);
+	
+	public static DigitalInput forkliftLimitTop = new DigitalInput(0);
+	public static DigitalInput forkliftLimitBottom = new DigitalInput(1);
 }
 
