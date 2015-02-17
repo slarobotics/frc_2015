@@ -39,8 +39,8 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	//Joysticks
-	Joystick leftStick = new Joystick(0);
-	Joystick rightStick = new Joystick(1);
+	static Joystick leftStick = new Joystick(0);
+	static Joystick rightStick = new Joystick(1);
 	
 	//leftStick buttons
 	Button leftTrigger = new JoystickButton(leftStick, 1);
@@ -61,5 +61,11 @@ public class OI {
 		rightButton3.whileHeld(new LowerLift());
 	}
 	
+	public static Joystick getRightJoystick(){
+		return rightStick;
+	}
+	public static Joystick getLeftJoystick(){
+		return leftStick;
+	}
 }
 

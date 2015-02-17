@@ -2,13 +2,13 @@ package org.scienceleadership.frc.team4454.robot.subsystems;
 
 import edu.wpi.first.wpilibj.command.Subsystem;
 
-public class AutonomusIntelligence extends Subsystem {
+public class AutonomousIntelligence extends Subsystem {
 
-	public AutonomusIntelligence() {
+	public AutonomousIntelligence() {
 		// TODO Auto-generated constructor stub
 	}
 
-	public AutonomusIntelligence(String name) {
+	public AutonomousIntelligence(String name) {
 		super(name);
 		// TODO Auto-generated constructor stub
 	}

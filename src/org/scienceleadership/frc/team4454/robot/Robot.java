@@ -2,15 +2,12 @@
 package org.scienceleadership.frc.team4454.robot;
 
 import edu.wpi.first.wpilibj.IterativeRobot;
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.Joystick;
-import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.scienceleadership.frc.team4454.robot.commands.ExampleCommand;
-import org.scienceleadership.frc.team4454.robot.subsystems.ExampleSubsystem;
+import org.scienceleadership.frc.team4454.robot.commands.AutonomousSequence;
+import org.scienceleadership.frc.team4454.robot.commands.ManualDrive;
 
 /**
  * The VM is configured to automatically run this class, and to call the
@@ -21,7 +18,6 @@ import org.scienceleadership.frc.team4454.robot.subsystems.ExampleSubsystem;
  */
 public class Robot extends IterativeRobot {
 
-	public static final ExampleSubsystem exampleSubsystem = new ExampleSubsystem();
 	public static OI oi;
 
     Command autonomousCommand;
@@ -33,7 +29,7 @@ public class Robot extends IterativeRobot {
     public void robotInit() {
 		oi = new OI();
         // instantiate the command used for the autonomous period
-        autonomousCommand = new ExampleCommand();
+        autonomousCommand = new AutonomousSequence();
 
 
     }
@@ -60,6 +56,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        
     }
 
     /**
@@ -75,6 +72,8 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
+        ManualDrive driveCommand = new ManualDrive(RobotMap.drivetrain, OI.getLeftJoystick().getY(), OI.getRightJoystick().getY());
+        driveCommand.start();
     }
     
     /**
@@ -84,3 +83,4 @@ public class Robot extends IterativeRobot {
         LiveWindow.run();
     }
 }
+

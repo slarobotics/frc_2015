@@ -1,22 +1,25 @@
 
 package org.scienceleadership.frc.team4454.robot.commands;
 
-import edu.wpi.first.wpilibj.command.Command;
-
-import org.scienceleadership.frc.team4454.robot.Robot;
+import edu.wpi.first.wpilibj.command.CommandGroup;
+import org.scienceleadership.frc.team4454.robot.*;
+import edu.wpi.first.wpilibj.Timer;
 
 /**
  *
  */
-public class ExampleCommand extends Command {
+public class AutonomousSequence extends CommandGroup {
 
-    public ExampleCommand() {
+    public AutonomousSequence() {
         // Use requires() here to declare subsystem dependencies
-        requires(Robot.exampleSubsystem);
+        //requires(Robot.exampleSubsystem);
+    	addSequential(new ManualDrive(RobotMap.drivetrain, -10, -10));
+    	//Timer.delay(5000);
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
+    	
     }
 
     // Called repeatedly when this Command is scheduled to run

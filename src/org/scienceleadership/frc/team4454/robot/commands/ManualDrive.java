@@ -3,8 +3,6 @@
  */
 package org.scienceleadership.frc.team4454.robot.commands;
 
-import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -15,22 +13,17 @@ import edu.wpi.first.wpilibj.command.Command;
 public class ManualDrive extends Command {
 
 	private RobotDrive drivetrain;
-	private Jaguar leftMotor;
-	private Jaguar rightMotor;
-	private Joystick leftStick;
-	private Joystick rightStick;
+	private double leftPower, rightPower;
+	private Boolean finished = false;
 
 	/**
 	 * 
 	 */
-	public ManualDrive(RobotDrive drivetrain, Jaguar leftMotor, Jaguar rightMotor, Joystick leftStick, Joystick rightStick) {
+	public ManualDrive(RobotDrive drivetrain, double leftPower, double rightPower) {
 		// TODO Auto-generated constructor stub
-		super("drive");
 		this.drivetrain = drivetrain;
-		this.leftMotor = leftMotor;
-		this.rightMotor = rightMotor;
-		this.leftStick = leftStick;
-		this.rightStick = rightStick;
+		this.leftPower = leftPower;
+		this.rightPower = rightPower;
 	}
 
 	/**
@@ -73,9 +66,8 @@ public class ManualDrive extends Command {
 	@Override
 	protected void execute() {
 		// TODO Auto-generated method stub
-    	if(leftStick.getTrigger() && rightStick.getTrigger()){
-    		drivetrain.tankDrive(leftStick.getY()*.95, rightStick.getX());
-    	} else drivetrain.tankDrive(leftStick.getY()*.70, rightStick.getX()*.70); 
+    	drivetrain.tankDrive(leftPower, rightPower);
+    	finished = true;
 	}
 
 	/* (non-Javadoc)
@@ -84,7 +76,7 @@ public class ManualDrive extends Command {
 	@Override
 	protected boolean isFinished() {
 		// TODO Auto-generated method stub
-		return false;
+		return finished;
 	}
 
 	/* (non-Javadoc)

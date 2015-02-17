@@ -1,7 +1,6 @@
 package org.scienceleadership.frc.team4454.robot;
 
 import edu.wpi.first.wpilibj.Jaguar;
-import edu.wpi.first.wpilibj.Joystick;
 import edu.wpi.first.wpilibj.RobotDrive;
 
 /**
@@ -21,6 +20,8 @@ public class RobotMap {
     // public static int rangefinderPort = 1;
     // public static int rangefinderModule = 1;
 	
-	
+	public static Jaguar leftMotor = new Jaguar(1);
+	public static Jaguar rightMotor = new Jaguar(0);
+	public static RobotDrive drivetrain = new RobotDrive(leftMotor, rightMotor);
 }
 
