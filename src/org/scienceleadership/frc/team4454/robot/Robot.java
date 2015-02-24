@@ -6,8 +6,7 @@ import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
 
-import org.scienceleadership.frc.team4454.robot.commands.AutonomousSequence;
-import org.scienceleadership.frc.team4454.robot.commands.ManualDrive;
+import org.scienceleadership.frc.team4454.robot.commands.*;
 import org.scienceleadership.frc.team4454.robot.subsystems.Forklift;
 
 /**
@@ -23,6 +22,8 @@ public class Robot extends IterativeRobot {
 	public static Forklift lift;
 
     Command autonomousCommand;
+    Command teleopCommand;
+
 
     /**
      * This function is run when the robot is first started up and should be
@@ -33,7 +34,8 @@ public class Robot extends IterativeRobot {
 		lift = new Forklift();
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousSequence();
-
+        // instantiate the command used for the teleop period
+        teleopCommand = new TeleopGroup();
 
     }
 	
@@ -59,6 +61,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
+        if (teleopCommand != null) teleopCommand.start();
         
     }
 
@@ -75,8 +78,7 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        ManualDrive driveCommand = new ManualDrive(RobotMap.drivetrain, OI.getLeftJoystick().getY(), OI.getRightJoystick().getY());
-        driveCommand.start();
+
     }
     
     /**

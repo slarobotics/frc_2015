@@ -7,9 +7,9 @@ import edu.wpi.first.wpilibj.command.Command;
 /**
  *
  */
-public class CheckInputs extends Command implements Runnable{
+public class CheckInput extends Command {
 
-    public CheckInputs() {
+    public CheckInput() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -20,7 +20,19 @@ public class CheckInputs extends Command implements Runnable{
     
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
-    	if()
+    	
+    	OI.getLeftButton3().whileHeld(new LowerLift());
+    	OI.getRightButton3().whileHeld(new RaiseLift());
+
+    	
+    	/*
+    	 * another possible way to do this
+    	if(OI.getLeftButton3().get()){
+    		
+    	} else if(OI.getRightButton3().get()){
+    		
+    	}
+    	*/
     }
 
     // Make this return true when this Command no longer needs to run execute()

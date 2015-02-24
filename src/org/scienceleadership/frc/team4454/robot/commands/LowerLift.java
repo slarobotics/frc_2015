@@ -18,7 +18,7 @@ public class LowerLift extends Command {
 
 	@Override
 	protected void execute() {
-		if(!limitBottom.get() && ){
+		if(!limitBottom.get()){
 			Robot.lift.lower();
 		}
 		else{

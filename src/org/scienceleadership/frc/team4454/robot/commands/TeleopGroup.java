@@ -33,7 +33,7 @@ public class TeleopGroup extends CommandGroup {
     	//runs ManualDrive and running the joystick inputs at the same time.
     	
     	addParallel(new ManualDrive(RobotMap.drivetrain, OI.getLeftJoystick().getY(), OI.getRightJoystick().getY()));
-    	addParallel(new CheckInputs());
+    	addParallel(new CheckInput());
     	
     }
 }
