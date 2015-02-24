@@ -1,56 +1,52 @@
 package org.scienceleadership.frc.team4454.robot.commands;
 
+import org.scienceleadership.frc.team4454.robot.Robot;
+import org.scienceleadership.frc.team4454.robot.RobotMap;
+
+import edu.wpi.first.wpilibj.DigitalInput;
 import edu.wpi.first.wpilibj.command.Command;
 
 public class LowerLift extends Command {
-
+	
+	DigitalInput limitTop = RobotMap.forkliftLimitTop;
+	DigitalInput limitBottom = RobotMap.forkliftLimitBottom;
+	private boolean finished;
+	
 	public LowerLift() {
-		// TODO Auto-generated constructor stub
-	}
-
-	public LowerLift(String name) {
-		super(name);
-		// TODO Auto-generated constructor stub
-	}
-
-	public LowerLift(double timeout) {
-		super(timeout);
-		// TODO Auto-generated constructor stub
-	}
-
-	public LowerLift(String name, double timeout) {
-		super(name, timeout);
-		// TODO Auto-generated constructor stub
-	}
-
-	@Override
-	protected void initialize() {
-		// TODO Auto-generated method stub
-
+		requires(Robot.lift);
 	}
 
 	@Override
 	protected void execute() {
-		// TODO Auto-generated method stub
-
+		if(!limitBottom.get() && ){
+			Robot.lift.lower();
+		}
+		else{
+			Robot.lift.stop();
+		}
+		finished = true;
 	}
 
 	@Override
 	protected boolean isFinished() {
-		// TODO Auto-generated method stub
-		return false;
+		return finished;
 	}
 
 	@Override
 	protected void end() {
-		// TODO Auto-generated method stub
-
+		if(!limitBottom.get())
+			Robot.lift.hold();
+		else Robot.lift.stop();
 	}
 
 	@Override
 	protected void interrupted() {
-		// TODO Auto-generated method stub
+		end();
+	}
 
+	@Override
+	protected void initialize() {
+		// empty or w/e
 	}
 
 }

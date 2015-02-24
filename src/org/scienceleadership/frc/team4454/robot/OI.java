@@ -43,23 +43,26 @@ public class OI {
 	static Joystick rightStick = new Joystick(1);
 	
 	//leftStick buttons
-	Button leftTrigger = new JoystickButton(leftStick, 1);
-	Button leftButton2 = new JoystickButton(leftStick, 2);
-	Button leftButton3 = new JoystickButton(leftStick, 3);
-	Button leftButton4 = new JoystickButton(leftStick, 4);
-	Button leftButton5 = new JoystickButton(leftStick, 5);
+	static Button leftTrigger = new JoystickButton(leftStick, 1);
+	static Button leftButton2 = new JoystickButton(leftStick, 2);
+	static Button leftButton3 = new JoystickButton(leftStick, 3);
+	static Button leftButton4 = new JoystickButton(leftStick, 4);
+	static Button leftButton5 = new JoystickButton(leftStick, 5);
 	
 	//rightStick buttons
-	Button rightTrigger = new JoystickButton(rightStick, 1);
-	Button rightButton2 = new JoystickButton(rightStick, 2);
-	Button rightButton3 = new JoystickButton(rightStick, 3);
-	Button rightButton4 = new JoystickButton(rightStick, 4);
-	Button rightButton5 = new JoystickButton(rightStick, 5);
-	
+	static 	Button rightTrigger = new JoystickButton(rightStick, 1);
+	static Button rightButton2 = new JoystickButton(rightStick, 2);
+	static Button rightButton3 = new JoystickButton(rightStick, 3);
+	static Button rightButton4 = new JoystickButton(rightStick, 4);
+	static Button rightButton5 = new JoystickButton(rightStick, 5);
+
+	/*
+	 * honestly i'm not sure this was ever going to work...
 	public OI(){
 		leftButton3.whileHeld(new RaiseLift());
 		rightButton3.whileHeld(new LowerLift());
 	}
+	*/
 	
 	public static Joystick getRightJoystick(){
 		return rightStick;
