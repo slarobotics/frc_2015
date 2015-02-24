@@ -1,5 +1,6 @@
 package org.scienceleadership.frc.team4454.robot.commands;
 
+import org.scienceleadership.frc.team4454.robot.OI;
 import org.scienceleadership.frc.team4454.robot.Robot;
 import org.scienceleadership.frc.team4454.robot.RobotMap;
 
@@ -19,10 +20,10 @@ public class RaiseLift extends Command {
 	@Override
 	protected void execute() {
 		if(!limitTop.get()){
-			Robot.lift.Raise();
+			Robot.lift.raise();
 		}
 		else{
-			Robot.lift.Hold();
+			Robot.lift.hold();
 		}
 		finished = true;
 	}
@@ -34,7 +35,7 @@ public class RaiseLift extends Command {
 
 	@Override
 	protected void end() {
-		Robot.lift.Hold();
+		Robot.lift.hold();
 	}
 
 	@Override

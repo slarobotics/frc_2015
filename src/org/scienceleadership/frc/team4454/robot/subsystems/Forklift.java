@@ -23,19 +23,19 @@ public class Forklift extends Subsystem {
 
 	}
 	
-	public void Raise(){
-		motor.set(1);
+	public void raise(){
+		motor.set(1); 
 	}
 	
-	public void Lower(){
+	public void lower(){
 		motor.set(-1);
 	}
 	
-	public void Hold(){
+	public void hold(){
 		motor.set(0.1);
 	}
 	
-	public void Stop(){
+	public void stop(){
 		motor.set(0);
 	}
 }

@@ -18,11 +18,11 @@ public class LowerLift extends Command {
 
 	@Override
 	protected void execute() {
-		if(!limitBottom.get()){
-			Robot.lift.Lower();
+		if(!limitBottom.get() && ){
+			Robot.lift.lower();
 		}
 		else{
-			Robot.lift.Stop();
+			Robot.lift.stop();
 		}
 		finished = true;
 	}
@@ -35,8 +35,8 @@ public class LowerLift extends Command {
 	@Override
 	protected void end() {
 		if(!limitBottom.get())
-			Robot.lift.Hold();
-		else Robot.lift.Stop();
+			Robot.lift.hold();
+		else Robot.lift.stop();
 	}
 
 	@Override
