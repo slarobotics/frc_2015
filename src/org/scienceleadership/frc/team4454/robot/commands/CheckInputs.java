@@ -1,13 +1,15 @@
 package org.scienceleadership.frc.team4454.robot.commands;
 
+import org.scienceleadership.frc.team4454.robot.OI;
+
 import edu.wpi.first.wpilibj.command.Command;
 
 /**
  *
  */
-public class checkInputs extends Command {
+public class CheckInputs extends Command implements Runnable{
 
-    public checkInputs() {
+    public CheckInputs() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
     }
@@ -15,9 +17,10 @@ public class checkInputs extends Command {
     // Called just before this Command runs the first time
     protected void initialize() {
     }
-
+    
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	if()
     }
 
     // Make this return true when this Command no longer needs to run execute()

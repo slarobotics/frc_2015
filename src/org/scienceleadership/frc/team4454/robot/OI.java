@@ -50,19 +50,92 @@ public class OI {
 	static Button leftButton5 = new JoystickButton(leftStick, 5);
 	
 	//rightStick buttons
-	static 	Button rightTrigger = new JoystickButton(rightStick, 1);
+	static Button rightTrigger = new JoystickButton(rightStick, 1);
 	static Button rightButton2 = new JoystickButton(rightStick, 2);
 	static Button rightButton3 = new JoystickButton(rightStick, 3);
 	static Button rightButton4 = new JoystickButton(rightStick, 4);
 	static Button rightButton5 = new JoystickButton(rightStick, 5);
 
 	/*
-	 * honestly i'm not sure this was ever going to work...
+	 * this is reccommended by WPIlib, but common sense & Java says it shouldn't work.
 	public OI(){
 		leftButton3.whileHeld(new RaiseLift());
 		rightButton3.whileHeld(new LowerLift());
 	}
 	*/
+	
+	/**
+	 * @return the leftStick
+	 */
+	public static Joystick getLeftStick() {
+		return leftStick;
+	}
+	/**
+	 * @return the rightStick
+	 */
+	public static Joystick getRightStick() {
+		return rightStick;
+	}
+	/**
+	 * @return the leftTrigger
+	 */
+	public static Button getLeftTrigger() {
+		return leftTrigger;
+	}
+	/**
+	 * @return the leftButton2
+	 */
+	public static Button getLeftButton2() {
+		return leftButton2;
+	}
+	/**
+	 * @return the leftButton3
+	 */
+	public static Button getLeftButton3() {
+		return leftButton3;
+	}
+	/**
+	 * @return the leftButton4
+	 */
+	public static Button getLeftButton4() {
+		return leftButton4;
+	}
+	/**
+	 * @return the leftButton5
+	 */
+	public static Button getLeftButton5() {
+		return leftButton5;
+	}
+	/**
+	 * @return the rightTrigger
+	 */
+	public static Button getRightTrigger() {
+		return rightTrigger;
+	}
+	/**
+	 * @return the rightButton2
+	 */
+	public static Button getRightButton2() {
+		return rightButton2;
+	}
+	/**
+	 * @return the rightButton3
+	 */
+	public static Button getRightButton3() {
+		return rightButton3;
+	}
+	/**
+	 * @return the rightButton4
+	 */
+	public static Button getRightButton4() {
+		return rightButton4;
+	}
+	/**
+	 * @return the rightButton5
+	 */
+	public static Button getRightButton5() {
+		return rightButton5;
+	}
 	
 	public static Joystick getRightJoystick(){
 		return rightStick;
