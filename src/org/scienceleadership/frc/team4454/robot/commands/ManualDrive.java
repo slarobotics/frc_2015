@@ -67,7 +67,7 @@ public class ManualDrive extends Command {
 	protected void execute() {
 		// TODO Auto-generated method stub
     	drivetrain.tankDrive(leftPower, rightPower);
-    	//finished = true;
+    	finished = true;
 	}
 
 	/* (non-Javadoc)

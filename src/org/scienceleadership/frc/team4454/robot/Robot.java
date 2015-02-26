@@ -60,7 +60,7 @@ public class Robot extends IterativeRobot {
         // continue until interrupted by another command, remove
         // this line or comment it out.
         if (autonomousCommand != null) autonomousCommand.cancel();
-        if (teleopCommand != null) teleopCommand.start();
+       // if (teleopCommand != null) teleopCommand.start();
         
     }
 
@@ -77,7 +77,13 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-
+        new ManualDrive(RobotMap.drivetrain, OI.getLeftJoystick().getY(), OI.getRightJoystick().getY()).start();
+        if(OI.getLeftJoystick().getRawButton(3)){
+        	new LowerLift().start();
+        }
+        if(OI.getRightJoystick().getRawButton(3)){
+        	new RaiseLift().start();
+        }
     }
     
     /**

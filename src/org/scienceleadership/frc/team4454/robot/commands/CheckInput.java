@@ -28,7 +28,6 @@ public class CheckInput extends Command {
     	
     	OI.getLeftButton3().whileHeld(new LowerLift());
     	OI.getRightButton3().whileHeld(new RaiseLift());
-
     	
     	/*
     	if(OI.getLeftButton3().get()){
