@@ -1,7 +1,9 @@
 
 package org.scienceleadership.frc.team4454.robot;
 
+import edu.wpi.first.wpilibj.GenericHID.Hand;
 import edu.wpi.first.wpilibj.IterativeRobot;
+import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
@@ -84,7 +86,11 @@ public class Robot extends IterativeRobot {
         if(OI.getRightJoystick().getRawButton(3)){
         	new RaiseLift().start();
         }
-        RobotMap.forkliftMotor.set(OI.getOperatorStick().getY());
+        Victor motor = RobotMap.forkliftMotor;
+        //if(!RobotMap.forkliftLimitTop.get() && OI.getOperatorStick().getY(Hand.kLeft) > 0)
+        	 System.out.println(OI.getOperatorStick().getY(Hand.kLeft));
+        //else if(!RobotMap.forkliftLimitBottom.get() && OI.getOperatorStick().getY(Hand.kLeft) < 0)
+        	motor.set(OI.getOperatorStick().getY(Hand.kLeft));
     }
     
     /**
