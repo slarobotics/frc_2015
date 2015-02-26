@@ -1,6 +1,7 @@
 package org.scienceleadership.frc.team4454.robot.commands;
 
 import org.scienceleadership.frc.team4454.robot.OI;
+import org.scienceleadership.frc.team4454.robot.subsystems.Forklift;
 
 import edu.wpi.first.wpilibj.command.Command;
 
@@ -9,6 +10,10 @@ import edu.wpi.first.wpilibj.command.Command;
  */
 public class CheckInput extends Command {
 
+	Forklift lift = new Forklift();
+	Command lower = new LowerLift();
+	Command raise = new RaiseLift();
+	
     public CheckInput() {
         // Use requires() here to declare subsystem dependencies
         // eg. requires(chassis);
@@ -26,13 +31,24 @@ public class CheckInput extends Command {
 
     	
     	/*
-    	 * another possible way to do this
     	if(OI.getLeftButton3().get()){
+    		while(true){
+    			lower.start();
+    			if(lower.isCanceled()){
+    				lower.start();
+    			}
+    		}
     		
     	} else if(OI.getRightButton3().get()){
-    		
+    		while(true){
+    			raise.start();
+    			if(raise.isCanceled()){
+    				raise.start();
+    			}
+    		}
     	}
-    	*/
+	*/
+    	
     }
 
     // Make this return true when this Command no longer needs to run execute()

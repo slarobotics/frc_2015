@@ -19,7 +19,7 @@ import org.scienceleadership.frc.team4454.robot.subsystems.Forklift;
 public class Robot extends IterativeRobot {
 
 	public static OI oi;
-	public static Forklift lift;
+	public static Forklift lift = new Forklift();
 
     Command autonomousCommand;
     Command teleopCommand;
@@ -31,7 +31,6 @@ public class Robot extends IterativeRobot {
      */
     public void robotInit() {
 		oi = new OI();
-		lift = new Forklift();
         // instantiate the command used for the autonomous period
         autonomousCommand = new AutonomousSequence();
         // instantiate the command used for the teleop period
