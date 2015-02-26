@@ -41,6 +41,7 @@ public class OI {
 	//Joysticks
 	static Joystick leftStick = new Joystick(0);
 	static Joystick rightStick = new Joystick(1);
+	static Joystick operatorJoystick = new Joystick(2);
 	
 	//leftStick buttons
 	static Button leftTrigger = new JoystickButton(leftStick, 1);
@@ -75,6 +76,9 @@ public class OI {
 	 */
 	public static Joystick getRightStick() {
 		return rightStick;
+	}
+	public static Joystick getOperatorStick(){
+		return operatorJoystick;
 	}
 	/**
 	 * @return the leftTrigger

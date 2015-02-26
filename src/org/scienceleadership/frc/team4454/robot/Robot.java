@@ -84,6 +84,7 @@ public class Robot extends IterativeRobot {
         if(OI.getRightJoystick().getRawButton(3)){
         	new RaiseLift().start();
         }
+        RobotMap.forkliftMotor.set(OI.getOperatorStick().getY());
     }
     
     /**
