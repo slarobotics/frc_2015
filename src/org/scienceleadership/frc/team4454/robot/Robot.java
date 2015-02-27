@@ -87,9 +87,9 @@ public class Robot extends IterativeRobot {
         	new RaiseLift().start();
         }
         Victor motor = RobotMap.forkliftMotor;
-        //if(!RobotMap.forkliftLimitTop.get() && OI.getOperatorStick().getY(Hand.kLeft) > 0)
+        if(!RobotMap.forkliftLimitTop.get() && OI.getOperatorStick().getTrigger(Hand.kLeft))
         	 System.out.println(OI.getOperatorStick().getY(Hand.kLeft));
-        //else if(!RobotMap.forkliftLimitBottom.get() && OI.getOperatorStick().getY(Hand.kLeft) < 0)
+        else if(!RobotMap.forkliftLimitBottom.get() && OI.getOperatorStick().getBumper(hand.kLeft))
         	motor.set(OI.getOperatorStick().getY(Hand.kLeft));
     }
     
