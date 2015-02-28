@@ -38,12 +38,12 @@ public class AutonomousSequence extends CommandGroup {
     		RobotMap.forkliftMotor.set(0);
     		new ManualDrive(RobotMap.drivetrain, -30, 0).start();
     	if(autonTimer.get() < 4)*/
-    		new ManualDrive(RobotMap.drivetrain, -30, -30).start();
+    		new ManualDrive(RobotMap.drivetrain, -20, -20).start();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (autonTimer.get() > 2);
+        return (autonTimer.get() > 1.5);
     }
 
     // Called once after isFinished returns true
