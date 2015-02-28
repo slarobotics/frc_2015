@@ -42,6 +42,7 @@ public class Robot extends IterativeRobot {
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
+		// if button press, then autonomous 
 	}
 
     public void autonomousInit() {
@@ -73,24 +74,28 @@ public class Robot extends IterativeRobot {
     public void disabledInit(){
 
     }
+    
+   
 
     /**
      * This function is called periodically during operator control
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        new ManualDrive(RobotMap.drivetrain, OI.getLeftJoystick().getY(), OI.getRightJoystick().getY()).start();
-        if(OI.getLeftJoystick().getRawButton(3)){
+        new ManualDrive(RobotMap.drivetrain, -OI.getLeftJoystick().getY(), -OI.getRightJoystick().getY()).start();
+        
+       /* if(OI.getLeftJoystick().getRawButton(3)){
         	new LowerLift().start();
         }
         if(OI.getRightJoystick().getRawButton(3)){
         	new RaiseLift().start();
-        }
+        }*/
+        
         Victor motor = RobotMap.forkliftMotor;
-        //if(!RobotMap.forkliftLimitTop.get() && OI.getOperatorStick().getY(Hand.kLeft) > 0)
-        	 System.out.println(OI.getOperatorStick().getY(Hand.kLeft));
-        //else if(!RobotMap.forkliftLimitBottom.get() && OI.getOperatorStick().getY(Hand.kLeft) < 0)
-        	motor.set(OI.getOperatorStick().getY(Hand.kLeft));
+        //if(!RobotMap.forkliftLimitTop.get() && -OI.getOperatorStick().getY(Hand.kLeft) > 0)
+       // 	motor.set(-OI.getOperatorStick().getY(Hand.kLeft));
+       // else if(!RobotMap.forkliftLimitBottom.get() && -OI.getOperatorStick().getY(Hand.kLeft) < 0)
+        	motor.set(-OI.getOperatorStick().getY(Hand.kLeft) / 2);
     }
     
     /**

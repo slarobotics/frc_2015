@@ -9,30 +9,46 @@ import edu.wpi.first.wpilibj.Timer;
  *
  */
 public class AutonomousSequence extends CommandGroup {
-
+	
+	Timer autonTimer;
+	private int autonMode = 0;
+	
     public AutonomousSequence() {
         // Use requires() here to declare subsystem dependencies
         //requires(Robot.exampleSubsystem);
-    	addSequential(new ManualDrive(RobotMap.drivetrain, -10, -10));
-    	//Timer.delay(5000);
+    	autonTimer = new Timer();
     }
 
     // Called just before this Command runs the first time
     protected void initialize() {
-    	
+    	autonTimer.start();
+    }
+    
+    public void incrementAuto(){
+    	autonMode +=1;
+    	if (autonMode >1)
+    		autonMode = 0;
     }
 
     // Called repeatedly when this Command is scheduled to run
     protected void execute() {
+    	/*if(autonTimer.get() < 1)
+    		RobotMap.forkliftMotor.set(0.2);
+    	if(autonTimer.get() < 2)
+    		RobotMap.forkliftMotor.set(0);
+    		new ManualDrive(RobotMap.drivetrain, -30, 0).start();
+    	if(autonTimer.get() < 4)*/
+    		new ManualDrive(RobotMap.drivetrain, -30, -30).start();
     }
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return false;
+        return (autonTimer.get() > 2);
     }
 
     // Called once after isFinished returns true
     protected void end() {
+    	new ManualDrive(RobotMap.drivetrain, 0, 0).start();
     }
 
     // Called when another command which requires one or more of the same
