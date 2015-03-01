@@ -98,7 +98,7 @@ public class Robot extends IterativeRobot {
         //if(!RobotMap.forkliftLimitTop.get() && -OI.getOperatorStick().getY(Hand.kLeft) > 0)
        // 	motor.set(-OI.getOperatorStick().getY(Hand.kLeft));
        // else if(!RobotMap.forkliftLimitBottom.get() && -OI.getOperatorStick().getY(Hand.kLeft) < 0)
-        	motor.set(-OI.getOperatorStick().getY(Hand.kLeft) / 2);
+        	motor.set(OI.getOperatorStick().getY(Hand.kLeft) / 2);
     }
     
     /**
