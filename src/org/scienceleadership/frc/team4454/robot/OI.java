@@ -39,9 +39,9 @@ public class OI {
     // button.whenReleased(new ExampleCommand());
 	
 	//Joysticks
-	static Joystick leftStick = new Joystick(0);
-	static Joystick rightStick = new Joystick(1);
-	static Joystick operatorJoystick = new Joystick(2);
+	static robovikingStick leftStick = new robovikingStick(0);
+	static robovikingStick rightStick = new robovikingStick(1);
+	static robovikingStick operatorJoystick = new robovikingStick(2);
 	
 	//leftStick buttons
 	static Button leftTrigger = new JoystickButton(leftStick, 1);
@@ -68,13 +68,13 @@ public class OI {
 	/**
 	 * @return the leftStick
 	 */
-	public static Joystick getLeftStick() {
+	public static robovikingStick getLeftStick() {
 		return leftStick;
 	}
 	/**
 	 * @return the rightStick
 	 */
-	public static Joystick getRightStick() {
+	public static robovikingStick getRightStick() {
 		return rightStick;
 	}
 	public static Joystick getOperatorStick(){

@@ -12,6 +12,11 @@ public class AutonomousSequence extends CommandGroup {
 	
 	Timer autonTimer;
 	private int autonMode = 0;
+	String[] autonModeNames = {"forward", "backward", "nothing"};
+	
+	public String GetAutonModeName(){
+		return autonModeNames[autonMode];
+	}
 	
     public AutonomousSequence() {
         // Use requires() here to declare subsystem dependencies
@@ -26,7 +31,7 @@ public class AutonomousSequence extends CommandGroup {
     
     public void incrementAuto(){
     	autonMode +=1;
-    	if (autonMode >1)
+    	if (autonMode >2)
     		autonMode = 0;
     }
 
@@ -38,7 +43,18 @@ public class AutonomousSequence extends CommandGroup {
     		RobotMap.forkliftMotor.set(0);
     		new ManualDrive(RobotMap.drivetrain, -30, 0).start();
     	if(autonTimer.get() < 4)*/
+    	switch(autonMode){
+    	case 0:
     		new ManualDrive(RobotMap.drivetrain, -20, -20).start();
+    		break;
+    	case 1:
+    		new ManualDrive(RobotMap.drivetrain, 20, 20).start();
+    		break;
+    	case 2:
+    		break;
+    	default:
+    		break;
+    	}
     }
 
     // Make this return true when this Command no longer needs to run execute()

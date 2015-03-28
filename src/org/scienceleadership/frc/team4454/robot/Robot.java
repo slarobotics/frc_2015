@@ -7,6 +7,7 @@ import edu.wpi.first.wpilibj.Victor;
 import edu.wpi.first.wpilibj.command.Command;
 import edu.wpi.first.wpilibj.command.Scheduler;
 import edu.wpi.first.wpilibj.livewindow.LiveWindow;
+import edu.wpi.first.wpilibj.smartdashboard.SmartDashboard;
 
 import org.scienceleadership.frc.team4454.robot.commands.*;
 import org.scienceleadership.frc.team4454.robot.subsystems.Forklift;
@@ -23,7 +24,7 @@ public class Robot extends IterativeRobot {
 	public static OI oi;
 	public static Forklift lift = new Forklift();
 
-    Command autonomousCommand;
+    AutonomousSequence autonomousCommand;
     Command teleopCommand;
 
 
@@ -37,12 +38,14 @@ public class Robot extends IterativeRobot {
         autonomousCommand = new AutonomousSequence();
         // instantiate the command used for the teleop period
         teleopCommand = new TeleopGroup();
-
     }
 	
 	public void disabledPeriodic() {
 		Scheduler.getInstance().run();
-		// if button press, then autonomous 
+		if (OI.getLeftStick().getButtonPressedOneShot(0)){
+			autonomousCommand.incrementAuto();
+			SmartDashboard.putString("Auto Mode", autonomousCommand.GetAutonModeName());
+		}
 	}
 
     public void autonomousInit() {
