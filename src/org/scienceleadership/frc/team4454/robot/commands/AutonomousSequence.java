@@ -12,7 +12,7 @@ public class AutonomousSequence extends CommandGroup {
 	
 	Timer autonTimer;
 	private int autonMode = 0;
-	String[] autonModeNames = {"forward", "backward", "nothing"};
+	String[] autonModeNames = {"forward", "backward", "nothing", "forward (slow + longer for ramp)"};
 	
 	public String GetAutonModeName(){
 		return autonModeNames[autonMode];
@@ -31,7 +31,7 @@ public class AutonomousSequence extends CommandGroup {
     
     public void incrementAuto(){
     	autonMode +=1;
-    	if (autonMode >2)
+    	if (autonMode >3)
     		autonMode = 0;
     }
 
@@ -52,6 +52,9 @@ public class AutonomousSequence extends CommandGroup {
     		break;
     	case 2:
     		break;
+    	case 3:
+    		new ManualDrive(RobotMap.drivetrain, -10, -10).start();
+    		break;
     	default:
     		break;
     	}
@@ -59,7 +62,10 @@ public class AutonomousSequence extends CommandGroup {
 
     // Make this return true when this Command no longer needs to run execute()
     protected boolean isFinished() {
-        return (autonTimer.get() > 1);
+    	if(autonMode != 3)
+    		return (autonTimer.get() > 1);
+    	else
+    		return (autonTimer.get() > 2);
     }
 
     // Called once after isFinished returns true
