@@ -41,10 +41,10 @@ public class Robot extends IterativeRobot {
     }
 	
 	public void disabledPeriodic() {
+		SmartDashboard.putString("Auto Mode", autonomousCommand.GetAutonModeName());
 		Scheduler.getInstance().run();
-		if (OI.getLeftStick().getButtonPressedOneShot(0)){
+		if (OI.getLeftStick().getButtonPressedOneShot(2)){
 			autonomousCommand.incrementAuto();
-			SmartDashboard.putString("Auto Mode", autonomousCommand.GetAutonModeName());
 		}
 	}
 
