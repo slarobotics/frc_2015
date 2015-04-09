@@ -85,10 +85,10 @@ public class Robot extends IterativeRobot {
      */
     public void teleopPeriodic() {
         Scheduler.getInstance().run();
-        if(OI.getLeftTrigger().get() && OI.getRightTrigger().get())
-        	new ManualDrive(RobotMap.drivetrain, -OI.getLeftJoystick().getY(), -OI.getRightJoystick().getY()).start();
-        else
-        	new ManualDrive(RobotMap.drivetrain, -OI.getLeftJoystick().getY() * 0.7, -OI.getRightJoystick().getY() * 0.7).start();
+       // if(OI.getLeftTrigger().get() && OI.getRightTrigger().get())
+       // 	new ManualDrive(RobotMap.drivetrain, -OI.getLeftJoystick().getY(), -OI.getRightJoystick().getY()).start();
+       // else
+        	new ManualDrive(RobotMap.drivetrain, -OI.getLeftJoystick().getY() * 0.3, -OI.getRightJoystick().getY() * 0.3).start();
         
        /* if(OI.getLeftJoystick().getRawButton(3)){
         	new LowerLift().start();
